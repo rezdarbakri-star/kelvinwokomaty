@@ -90,9 +90,18 @@ nav.scrolled{background:rgba(10,10,10,.93);backdrop-filter:blur(20px);padding:1r
 .section-divider{width:50px;height:1px;background:var(--gold);margin:0 auto 2.5rem;opacity:.4}
 
 /* ── INTRO ── */
-.intro{padding:9rem 2rem;max-width:900px;margin:0 auto;text-align:center}
+.intro{padding:9rem 2rem 7rem;max-width:900px;margin:0 auto;text-align:center}
+.intro-portrait{width:140px;height:140px;border-radius:50%;overflow:hidden;margin:0 auto 3rem;border:1px solid rgba(201,169,110,.2);position:relative}
+.intro-portrait::after{content:'';position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 30px rgba(10,10,10,.4)}
+.intro-portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15);transition:filter .5s}
+.intro-portrait:hover img{filter:grayscale(0)}
 .intro blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.4rem);font-weight:300;line-height:1.55;color:var(--cream);font-style:italic}
 .intro blockquote em{color:var(--gold);font-style:normal}
+
+/* ── LIFESTYLE IMAGE ── */
+.lifestyle-img{max-width:1200px;margin:0 auto;padding:0 2rem}
+.lifestyle-img img{width:100%;height:400px;object-fit:cover;object-position:center 30%;display:block;filter:grayscale(.1);transition:filter .6s}
+.lifestyle-img:hover img{filter:grayscale(0)}
 
 /* ── AUDIENCE ── */
 .audience{padding:3.5rem 2rem;background:var(--deep);border-top:1px solid rgba(201,169,110,.06);border-bottom:1px solid rgba(201,169,110,.06)}
@@ -208,6 +217,7 @@ footer p{font-size:.55rem;color:var(--text-muted);letter-spacing:.1em}
   .video-grid{grid-template-columns:repeat(3,1fr);gap:.6rem}
   .img-gallery{gap:2px}
   .intro{padding:5rem 1.5rem}
+  .lifestyle-img img{height:250px}
   .showcase{padding:6rem 1.5rem}
   .media{padding:6rem 1.5rem}
   .partners{padding:5rem 1.5rem}
@@ -296,6 +306,9 @@ footer p{font-size:.55rem;color:var(--text-muted);letter-spacing:.1em}
 
 <!-- ═══ INTRO ═══ -->
 <section class="intro reveal" id="om">
+  <div class="intro-portrait">
+    <img src="https://i.ibb.co/tPZhPQt4/profilbild.png" alt="Kelvin Wokomaty" loading="lazy">
+  </div>
   <span class="section-label">Om Kelvin</span>
   <div class="section-divider"></div>
   <blockquote>
@@ -350,6 +363,11 @@ footer p{font-size:.55rem;color:var(--text-muted);letter-spacing:.1em}
     <span>Pressbyrån</span><div class="dot"></div>
     <span>SvD</span><div class="dot"></div>
   </div>
+</section>
+
+<!-- ═══ LIFESTYLE IMAGE ═══ -->
+<section class="lifestyle-img reveal">
+  <img src="https://i.ibb.co/Xfs5SQT9/h-rligt-umg-nge.png" alt="Kelvin Wokomaty — behind the scenes" loading="lazy">
 </section>
 
 <!-- ═══ CONTENT SHOWCASE ═══ -->
@@ -500,7 +518,7 @@ function onYouTubeIframeAPIReady(){
   player=new YT.Player('ytPlayer',{
     videoId:'qYK48to-oFc',
     playerVars:{autoplay:1,mute:1,controls:0,showinfo:0,modestbranding:1,rel:0,playsinline:1,disablekb:1,fs:0,iv_load_policy:3},
-    events:{onReady:function(e){e.target.playVideo();setInterval(function(){if(player&&player.getCurrentTime&&player.getCurrentTime()>=7){player.seekTo(0)}},200)}}
+    events:{onReady:function(e){e.target.playVideo();setInterval(function(){if(player&&player.getCurrentTime&&player.getCurrentTime()>=12){player.seekTo(0)}},200)}}
   });
 }
 </script>
