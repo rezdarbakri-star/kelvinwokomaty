@@ -4,13 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kelvin Wokomaty — Mediakit</title>
-<meta name="description" content="Kelvin Wokomaty — Michelin-kock, mediaprofil och content creator. Mediakit för samarbeten och annonsörer.">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Libre+Caslon+Display&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Libre+Caslon+Display&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --black:#0a0a0a;--deep:#111;--charcoal:#1a1a1a;--dark-warm:#1c1915;
-  --gold:#c9a96e;--gold-light:#d4b87a;--gold-pale:#e8d5a8;
+  --gold:#c9a96e;--gold-light:#d4b87a;
   --cream:#f5f0e8;--text-muted:#8a8278;--text-light:#b5ada3;
 }
 html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--gold) var(--black)}
@@ -25,219 +24,117 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 /* ── PRELOADER ── */
 .preloader{position:fixed;inset:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .8s,visibility .8s}
 .preloader.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.pre-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,3vw,2.2rem);font-weight:300;letter-spacing:.5em;text-transform:uppercase;color:var(--gold)}
+.pre-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.8vw,2rem);font-weight:300;letter-spacing:.5em;text-transform:uppercase;color:var(--gold)}
 .pre-text span{display:inline-block;animation:preR .5s ease forwards;opacity:0;transform:translateY(100%)}
 @keyframes preR{to{opacity:1;transform:translateY(0)}}
 .pre-line{width:0;height:1px;background:var(--gold);margin-top:1.5rem;animation:lineX 1.5s ease .7s forwards}
-@keyframes lineX{to{width:160px}}
+@keyframes lineX{to{width:140px}}
 
 /* ── GRAIN ── */
 .grain{position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.02;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:256px}
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.5rem 3rem;display:flex;justify-content:space-between;align-items:center;transition:background .5s,padding .4s}
-nav.scrolled{background:rgba(10,10,10,.93);backdrop-filter:blur(20px);padding:1rem 3rem;border-bottom:1px solid rgba(201,169,110,.08)}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:400;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:opacity .3s}
-.nav-logo:hover{opacity:.7}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{color:var(--cream);text-decoration:none;font-size:.66rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;position:relative;padding-bottom:4px;transition:color .3s}
-.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .4s cubic-bezier(.25,.46,.45,.94)}
-.nav-links a:hover{color:var(--gold)}
-.nav-links a:hover::after{width:100%}
-.menu-btn{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:6px;padding:8px}
-.menu-btn span{display:block;width:28px;height:1px;background:var(--gold);transition:transform .4s,opacity .3s}
-.menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
-.menu-btn.active span:nth-child(2){opacity:0}
-.menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-.mob-menu{position:fixed;inset:0;background:var(--black);z-index:999;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .5s,visibility .5s}
-.mob-menu.active{opacity:1;visibility:visible}
-.mob-menu ul{list-style:none;text-align:center;display:flex;flex-direction:column;gap:2rem}
-.mob-menu a{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--cream);text-decoration:none;transition:color .3s}
-.mob-menu a:hover{color:var(--gold)}
-
-/* ── HERO (Video) ── */
-.hero{position:relative;width:100%;height:100vh;min-height:650px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+/* ── HERO ── */
+.hero{position:relative;width:100%;height:100vh;min-height:600px;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .hero-video-wrap{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hero-video-wrap iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;transform:translate(-50%,-50%);pointer-events:none;border:none}
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(10,10,10,.55) 0%,rgba(10,10,10,.25) 40%,rgba(10,10,10,.75) 100%)}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(10,10,10,.5) 0%,rgba(10,10,10,.2) 40%,rgba(10,10,10,.75) 100%)}
 .hero-content{position:relative;z-index:2;text-align:center;padding:0 2rem}
-.hero-eyebrow{font-size:.6rem;font-weight:400;letter-spacing:.6em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;opacity:0;animation:fadeU 1s ease 2.2s forwards}
+.hero-eyebrow{font-size:.58rem;font-weight:400;letter-spacing:.6em;text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;opacity:0;animation:fadeU 1s ease 2.2s forwards}
 .hero-title{font-family:'Libre Caslon Display',serif;font-size:clamp(2.8rem,9vw,8rem);font-weight:400;line-height:.95;color:var(--cream)}
 .hero-title .line{display:block;overflow:hidden}
 .hero-title .line span{display:inline-block;transform:translateY(110%);animation:hR 1.2s cubic-bezier(.16,1,.3,1) forwards}
 .hero-title .line:nth-child(1) span{animation-delay:2s}
 .hero-title .line:nth-child(2) span{animation-delay:2.12s}
 @keyframes hR{to{transform:translateY(0)}}
-.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(.9rem,1.7vw,1.25rem);font-weight:300;font-style:italic;color:var(--text-light);margin-top:1.5rem;opacity:0;animation:fadeU 1s ease 2.5s forwards}
-.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.7rem;opacity:0;animation:fadeU 1s ease 3s forwards}
-.hero-scroll span{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text-muted)}
-.scroll-line{width:1px;height:45px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sPulse 2s ease-in-out infinite}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(.85rem,1.5vw,1.15rem);font-weight:300;font-style:italic;color:var(--text-light);margin-top:1.3rem;opacity:0;animation:fadeU 1s ease 2.5s forwards}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;animation:fadeU 1s ease 3s forwards}
+.hero-scroll span{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text-muted)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sPulse 2s ease-in-out infinite}
 @keyframes sPulse{0%,100%{opacity:.3;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
-@keyframes fadeU{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeU{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── PLATFORM STATS BAR ── */
-.platform-bar{padding:0;border-top:1px solid rgba(201,169,110,.08);border-bottom:1px solid rgba(201,169,110,.08)}
-.platform-bar-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr)}
-.plat-item{text-align:center;padding:3rem 1.5rem;position:relative;transition:background .4s}
-.plat-item:not(:last-child)::after{content:'';position:absolute;right:0;top:25%;height:50%;width:1px;background:rgba(201,169,110,.1)}
-.plat-item:hover{background:rgba(201,169,110,.03)}
-.plat-icon{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.8rem;display:block}
-.plat-num{font-family:'Libre Caslon Display',serif;font-size:clamp(2rem,4vw,3rem);color:var(--gold);line-height:1;margin-bottom:.4rem}
-.plat-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted)}
+/* ── STATS ── */
+.stats-section{padding:5rem 2rem 4rem}
+.stats-inner{max-width:700px;margin:0 auto}
+.stat-category{margin-bottom:3rem}
+.stat-category:last-child{margin-bottom:0}
+.stat-cat-label{font-size:.48rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:block;opacity:.7}
+.stat-line{display:flex;align-items:center;justify-content:space-between;padding:.7rem 0;position:relative}
+.stat-line+.stat-line{border-top:1px solid rgba(201,169,110,.05)}
+.stat-key{font-size:.65rem;letter-spacing:.12em;color:var(--text-muted)}
+.stat-val{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--cream);min-width:70px;text-align:right}
+.stat-bar-wrap{flex:1;margin:0 1.5rem;height:1px;background:rgba(201,169,110,.06);position:relative;overflow:hidden}
+.stat-bar{height:100%;background:var(--gold);opacity:.25;transform-origin:left;transform:scaleX(0);transition:transform 3s cubic-bezier(.16,1,.3,1)}
+.stat-block.vis .stat-bar{transform:scaleX(1)}
+.stat-divider{width:100%;height:1px;background:rgba(201,169,110,.06);margin:1rem 0}
+/* demographics mini bars */
+.demo-row{display:flex;align-items:center;gap:1rem;padding:.5rem 0}
+.demo-label{font-size:.6rem;letter-spacing:.1em;color:var(--text-muted);min-width:55px}
+.demo-bar-wrap{flex:1;height:3px;background:rgba(201,169,110,.06);border-radius:2px;overflow:hidden}
+.demo-bar{height:100%;background:var(--gold);opacity:.35;border-radius:2px;transform-origin:left;transform:scaleX(0);transition:transform 3s cubic-bezier(.16,1,.3,1)}
+.stat-block.vis .demo-bar{transform:scaleX(1)}
+.demo-val{font-family:'Cormorant Garamond',serif;font-size:.85rem;color:var(--cream);min-width:35px;text-align:right}
+/* stat block animation wrapper */
+.stat-block{opacity:0;transform:translateY(20px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.16,1,.3,1)}
+.stat-block.vis{opacity:1;transform:translateY(0)}
 
-/* ── SECTION UTILITIES ── */
-.section-label{font-size:.6rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-bottom:2.5rem;display:block}
-.section-divider{width:50px;height:1px;background:var(--gold);margin:0 auto 2.5rem;opacity:.4}
-
-/* ── INTRO ── */
-.intro{padding:9rem 2rem 7rem;max-width:900px;margin:0 auto;text-align:center}
-.intro-portrait{width:140px;height:140px;border-radius:50%;overflow:hidden;margin:0 auto 3rem;border:1px solid rgba(201,169,110,.2);position:relative}
-.intro-portrait::after{content:'';position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 30px rgba(10,10,10,.4)}
-.intro-portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15);transition:filter .5s}
-.intro-portrait:hover img{filter:grayscale(0)}
-.intro blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.4rem);font-weight:300;line-height:1.55;color:var(--cream);font-style:italic}
-.intro blockquote em{color:var(--gold);font-style:normal}
-
-/* ── LIFESTYLE IMAGE ── */
-.lifestyle-img{max-width:1200px;margin:0 auto;padding:0 2rem}
-.lifestyle-img img{width:100%;height:400px;object-fit:cover;object-position:center 30%;display:block;filter:grayscale(.1);transition:filter .6s}
-.lifestyle-img:hover img{filter:grayscale(0)}
-
-/* ── AUDIENCE ── */
-.audience{padding:3.5rem 2rem;background:var(--deep);border-top:1px solid rgba(201,169,110,.06);border-bottom:1px solid rgba(201,169,110,.06)}
-.audience-inner{max-width:560px;margin:0 auto}
-.aud-row{display:grid;grid-template-columns:1fr 1fr;gap:1px}
-.aud-block{background:var(--charcoal);padding:2rem 1.5rem;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.aud-split{display:flex;align-items:center;gap:1.5rem}
-.aud-divider{width:1px;height:32px;background:rgba(201,169,110,.15)}
-.aud-piece{display:flex;flex-direction:column;align-items:center;gap:.3rem}
-.aud-val{font-family:'Libre Caslon Display',serif;font-size:1.3rem;color:var(--gold);line-height:1}
-.aud-lbl{font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted)}
-.aud-val-lg{font-family:'Libre Caslon Display',serif;font-size:1.6rem;color:var(--gold);line-height:1;margin-bottom:.4rem}
-
-/* ── CREDENTIALS MARQUEE ── */
-.cred{padding:3rem 0;border-bottom:1px solid rgba(201,169,110,.08);overflow:hidden}
-.cred-track{display:flex;align-items:center;gap:3.5rem;animation:marq 30s linear infinite;white-space:nowrap}
-.cred-track span{font-family:'Cormorant Garamond',serif;font-size:.9rem;letter-spacing:.25em;text-transform:uppercase;color:var(--text-muted);flex-shrink:0}
-.cred-track .dot{width:4px;height:4px;background:var(--gold);border-radius:50%;flex-shrink:0}
-@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* ── CONTENT SHOWCASE ── */
-.showcase{padding:10rem 2rem}
-.showcase-header{text-align:center;margin-bottom:5rem}
-.showcase-header h2{font-family:'Libre Caslon Display',serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:400;color:var(--cream);margin-bottom:1rem}
-.showcase-header p{font-size:.82rem;color:var(--text-muted);max-width:500px;margin:0 auto;line-height:1.7}
-
-.img-gallery{max-width:1300px;margin:0 auto 5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-.img-gallery-item{position:relative;overflow:hidden;aspect-ratio:4/5;cursor:pointer}
-.img-gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.25,.46,.45,.94),filter .5s}
-.img-gallery-item:hover img{transform:scale(1.05);filter:brightness(1.1)}
-.img-gallery-item .img-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.8) 0%,transparent 50%);opacity:0;transition:opacity .5s;display:flex;align-items:flex-end;padding:1.8rem}
-.img-gallery-item:hover .img-ov{opacity:1}
-.img-ov-text h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--cream);transform:translateY(12px);transition:transform .4s}
-.img-gallery-item:hover .img-ov-text h3{transform:translateY(0)}
-.img-ov-text p{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:.3rem;transform:translateY(12px);transition:transform .4s .03s}
-.img-gallery-item:hover .img-ov-text p{transform:translateY(0)}
-
-.video-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.video-card{position:relative;border:1px solid rgba(201,169,110,.1);overflow:hidden;transition:border-color .4s;aspect-ratio:9/16}
-.video-card:hover{border-color:rgba(201,169,110,.3)}
+/* ── VIDEOS ── */
+.videos-section{padding:4rem 2rem 8rem}
+.videos-header{text-align:center;margin-bottom:3.5rem}
+.videos-header span{font-size:.55rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold)}
+.video-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.video-card{position:relative;border:1px solid rgba(201,169,110,.08);overflow:hidden;aspect-ratio:9/16;transition:border-color .4s}
+.video-card:hover{border-color:rgba(201,169,110,.25)}
 .video-card iframe{position:absolute;top:-60px;left:-10px;width:calc(100% + 20px);height:calc(100% + 120px);border:none;pointer-events:none}
-.video-card-label{position:absolute;bottom:0;left:0;right:0;padding:.8rem 1.2rem;background:linear-gradient(to top,rgba(10,10,10,.9) 0%,transparent 100%);z-index:2}
-.video-card-label span{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
 
-/* ── MEDIA APPEARANCES ── */
-.media{padding:10rem 2rem;background:radial-gradient(ellipse at 80% 20%,rgba(201,169,110,.03) 0%,transparent 50%),var(--deep)}
-.media-header{text-align:center;margin-bottom:5rem}
-.media-header h2{font-family:'Libre Caslon Display',serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:400;color:var(--cream)}
-.media-cards{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.med-card{background:var(--charcoal);padding:3rem 2.2rem;position:relative;overflow:hidden;transition:background .5s;cursor:default}
-.med-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.25,.46,.45,.94)}
-.med-card:hover::before{transform:scaleX(1)}
-.med-card:hover{background:var(--dark-warm)}
-.med-card h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--cream);margin-bottom:.5rem;transition:color .3s}
-.med-card:hover h3{color:var(--gold)}
-.med-card .role{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.3rem;display:block}
-.med-card p{font-size:.78rem;line-height:1.8;color:var(--text-muted)}
-
-/* ── BRAND PARTNERS ── */
-.partners{padding:8rem 2rem}
-.partners-header{text-align:center;margin-bottom:4rem}
-.partners-header h2{font-family:'Libre Caslon Display',serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:400;color:var(--cream)}
-.partners-grid{display:flex;align-items:center;justify-content:center;gap:3.5rem;flex-wrap:wrap;max-width:1000px;margin:0 auto}
-.partner-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--text-muted);letter-spacing:.1em;transition:color .4s,transform .4s;cursor:default}
-.partner-name:hover{color:var(--gold);transform:translateY(-3px)}
-
-/* ── STATEMENT ── */
-.statement{padding:10rem 2rem;text-align:center;background:radial-gradient(ellipse at 50% 50%,rgba(201,169,110,.04) 0%,transparent 60%),var(--dark-warm)}
-.statement h2{font-family:'Libre Caslon Display',serif;font-size:clamp(2rem,5.5vw,4.5rem);font-weight:400;line-height:1.15;color:var(--cream);max-width:950px;margin:0 auto}
-.statement h2 em{font-style:italic;color:var(--gold);font-family:'Cormorant Garamond',serif;font-weight:300}
+/* ── OM ── */
+.om{padding:8rem 2rem;max-width:800px;margin:0 auto;text-align:center}
+.om-portrait{width:110px;height:110px;border-radius:50%;overflow:hidden;margin:0 auto 2.5rem;border:1px solid rgba(201,169,110,.15)}
+.om-portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(.1);transition:filter .5s}
+.om-portrait:hover img{filter:grayscale(0)}
+.om-label{font-size:.55rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:block}
+.om-divider{width:40px;height:1px;background:var(--gold);margin:0 auto 1.5rem;opacity:.3}
+.om blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.9rem);font-weight:300;line-height:1.6;color:var(--cream);font-style:italic}
+.om blockquote em{color:var(--gold);font-style:normal}
+.om-partners{margin-top:3rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem}
+.om-partner{font-family:'Cormorant Garamond',serif;font-size:.75rem;color:var(--text-muted);letter-spacing:.08em}
+.om-partner::after{content:' ·';color:rgba(201,169,110,.3)}
+.om-partner:last-child::after{content:''}
 
 /* ── CTA ── */
-.cta{padding:8rem 2rem;border-top:1px solid rgba(201,169,110,.08)}
-.cta-inner{max-width:800px;margin:0 auto;text-align:center}
-.cta-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:300;color:var(--cream);line-height:1.6;margin-bottom:3rem}
-.cta-btn{display:inline-block;padding:1.2rem 3.5rem;border:1px solid var(--gold);color:var(--gold);text-decoration:none;font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;position:relative;overflow:hidden;background:transparent;cursor:pointer}
-.cta-btn::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .5s cubic-bezier(.25,.46,.45,.94);z-index:0}
-.cta-btn:hover::before{transform:scaleX(1);transform-origin:left}
-.cta-btn span{position:relative;z-index:1;transition:color .5s}
-.cta-btn:hover span{color:var(--black)}
-.cta-links{display:flex;justify-content:center;gap:2rem;margin-top:2.5rem;flex-wrap:wrap}
-.cta-links a{color:var(--text-muted);text-decoration:none;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;transition:color .3s;position:relative}
+.cta{padding:6rem 2rem 4rem;text-align:center}
+.cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:300;font-style:italic;color:var(--cream);line-height:1.5;max-width:650px;margin:0 auto 2.5rem}
+.cta h2 em{color:var(--gold);font-style:normal}
+.cta-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+.cta-links a{color:var(--text-muted);text-decoration:none;font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;transition:color .3s;position:relative}
 .cta-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
 .cta-links a:hover{color:var(--gold)}
 .cta-links a:hover::after{width:100%}
 
 /* ── FOOTER ── */
-footer{padding:3.5rem 2rem 1.5rem;border-top:1px solid rgba(201,169,110,.05);text-align:center}
-.footer-logo{font-family:'Cormorant Garamond',serif;font-size:.8rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:block}
-footer p{font-size:.55rem;color:var(--text-muted);letter-spacing:.1em}
+footer{padding:3rem 2rem 1.5rem;text-align:center;border-top:1px solid rgba(201,169,110,.04)}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:.7rem;letter-spacing:.5em;text-transform:uppercase;color:rgba(201,169,110,.4);margin-bottom:.8rem;display:block}
+footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
 
-/* ── REVEALS ── */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s cubic-bezier(.16,1,.3,1)}
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s,transform .8s cubic-bezier(.16,1,.3,1)}
 .reveal.vis{opacity:1;transform:translateY(0)}
-.rstag>*{opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s cubic-bezier(.16,1,.3,1)}
-.rstag.vis>*{opacity:1;transform:translateY(0)}
-.rstag.vis>*:nth-child(1){transition-delay:0s}
-.rstag.vis>*:nth-child(2){transition-delay:.08s}
-.rstag.vis>*:nth-child(3){transition-delay:.14s}
-.rstag.vis>*:nth-child(4){transition-delay:.2s}
-.rstag.vis>*:nth-child(5){transition-delay:.26s}
-.rstag.vis>*:nth-child(6){transition-delay:.32s}
 
 /* ── RESPONSIVE ── */
-@media(max-width:1024px){
-  .media-cards{grid-template-columns:1fr}
-}
 @media(max-width:768px){
-  nav{padding:1.2rem 1.5rem}
-  nav.scrolled{padding:.8rem 1.5rem}
-  .nav-links{display:none}
-  .menu-btn{display:flex}
-  .video-grid{grid-template-columns:repeat(3,1fr);gap:.6rem}
-  .img-gallery{gap:2px}
-  .intro{padding:5rem 1.5rem}
-  .lifestyle-img img{height:250px}
-  .showcase{padding:6rem 1.5rem}
-  .media{padding:6rem 1.5rem}
-  .partners{padding:5rem 1.5rem}
-  .statement{padding:6rem 1.5rem}
-  .audience-grid{grid-template-columns:1fr}
-  .aud-row{grid-template-columns:1fr 1fr}
+  .video-grid{grid-template-columns:repeat(3,1fr);gap:.5rem}
+  .stat-block{flex-direction:column;gap:.5rem;align-items:stretch}
+  .stat-bar-wrap{margin:0 1rem}
+  .om{padding:5rem 1.5rem}
   .cur-d,.cur-r{display:none}
-  .partners-grid{gap:2rem}
 }
 @media(max-width:480px){
-  .video-grid{grid-template-columns:1fr;max-width:300px;margin:0 auto}
-  .img-gallery{grid-template-columns:1fr}
-  .platform-bar-inner{grid-template-columns:1fr}
-  .plat-item:not(:last-child)::after{width:40%;height:1px;top:auto;bottom:0;left:30%;right:auto}
+  .video-grid{grid-template-columns:1fr;max-width:280px;margin:0 auto}
 }
 </style>
 </head>
 <body>
 
-<!-- Preloader -->
 <div class="preloader" id="preloader">
   <div class="pre-text" id="preText"></div>
   <div class="pre-line"></div>
@@ -246,29 +143,9 @@ footer p{font-size:.55rem;color:var(--text-muted);letter-spacing:.1em}
 <div class="cur-d" id="cD"></div>
 <div class="cur-r" id="cR"></div>
 
-<!-- Nav -->
-<nav id="nav">
-  <a href="#" class="nav-logo">Kelvin Wokomaty</a>
-  <ul class="nav-links">
-    <li><a href="#om">Om</a></li>
-    <li><a href="#content">Content</a></li>
-    <li><a href="#media">Media</a></li>
-    <li><a href="#samarbeten">Samarbeten</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
-  </ul>
-  <button class="menu-btn" id="menuBtn" aria-label="Meny"><span></span><span></span><span></span></button>
-</nav>
-<div class="mob-menu" id="mobMenu">
-  <ul>
-    <li><a href="#om" onclick="closeM()">Om</a></li>
-    <li><a href="#content" onclick="closeM()">Content</a></li>
-    <li><a href="#media" onclick="closeM()">Media</a></li>
-    <li><a href="#samarbeten" onclick="closeM()">Samarbeten</a></li>
-    <li><a href="#kontakt" onclick="closeM()">Kontakt</a></li>
-  </ul>
-</div>
-
-<!-- ═══ HERO ═══ -->
+<!-- ═══════════════════════════════════ -->
+<!-- HERO                                -->
+<!-- ═══════════════════════════════════ -->
 <section class="hero">
   <div class="hero-video-wrap">
     <div id="ytPlayer"></div>
@@ -288,195 +165,132 @@ footer p{font-size:.55rem;color:var(--text-muted);letter-spacing:.1em}
   </div>
 </section>
 
-<!-- ═══ PLATFORM STATS ═══ -->
-<section class="platform-bar reveal">
-  <div class="platform-bar-inner">
-    <div class="plat-item">
-      <span class="plat-icon">Instagram</span>
-      <div class="plat-num">105K</div>
-      <div class="plat-label">Följare</div>
-    </div>
-    <div class="plat-item">
-      <span class="plat-icon">TikTok</span>
-      <div class="plat-num">71K</div>
-      <div class="plat-label">Följare</div>
-    </div>
-  </div>
-</section>
+<!-- ═══════════════════════════════════ -->
+<!-- STATS                               -->
+<!-- ═══════════════════════════════════ -->
+<section class="stats-section">
+  <div class="stats-inner">
 
-<!-- ═══ INTRO ═══ -->
-<section class="intro reveal" id="om">
-  <div class="intro-portrait">
-    <img src="https://i.ibb.co/tPZhPQt4/profilbild.png" alt="Kelvin Wokomaty" loading="lazy">
-  </div>
-  <span class="section-label">Om Kelvin</span>
-  <div class="section-divider"></div>
-  <blockquote>
-    Michelin-utbildad sous-chef med bakgrund från Hollands och Stockholms finaste kök. Idag en av Sveriges mest synliga matprofiler — med en unik position i korsningen av <em>kulinarisk trovärdighet</em>, <em>mediapresens</em> och en <em>engagerad digital publik</em> som lagar efter hans recept varje vecka.
-  </blockquote>
-</section>
-
-<!-- ═══ AUDIENCE ═══ -->
-<section class="audience reveal">
-  <div class="audience-inner">
-    <div class="aud-row">
-      <div class="aud-block">
-        <div class="aud-split">
-          <div class="aud-piece">
-            <span class="aud-val">65%</span>
-            <span class="aud-lbl">Kvinnor</span>
-          </div>
-          <div class="aud-divider"></div>
-          <div class="aud-piece">
-            <span class="aud-val">35%</span>
-            <span class="aud-lbl">Män</span>
-          </div>
-        </div>
+    <!-- Räckvidd -->
+    <div class="stat-category stat-block" data-delay="0">
+      <span class="stat-cat-label">Räckvidd</span>
+      <div class="stat-line">
+        <span class="stat-key">Följare totalt</span>
+        <div class="stat-bar-wrap"><div class="stat-bar" style="width:100%"></div></div>
+        <span class="stat-val"><span class="cnt" data-target="200" data-suffix="K+">0</span></span>
       </div>
-      <div class="aud-block">
-        <span class="aud-val-lg">25–44</span>
-        <span class="aud-lbl">Primär åldersgrupp</span>
+      <div class="stat-line">
+        <span class="stat-key">Visningar / månad</span>
+        <div class="stat-bar-wrap"><div class="stat-bar" style="width:100%"></div></div>
+        <span class="stat-val">~<span class="cnt" data-target="11" data-suffix="M">0</span></span>
       </div>
     </div>
+
+    <!-- Plattform -->
+    <div class="stat-category stat-block" data-delay="300">
+      <span class="stat-cat-label">Plattform</span>
+      <div class="stat-line">
+        <span class="stat-key">Instagram</span>
+        <div class="stat-bar-wrap"><div class="stat-bar" style="width:100%"></div></div>
+        <span class="stat-val"><span class="cnt" data-target="105" data-suffix="K">0</span></span>
+      </div>
+      <div class="stat-line">
+        <span class="stat-key">TikTok</span>
+        <div class="stat-bar-wrap"><div class="stat-bar" style="width:68%"></div></div>
+        <span class="stat-val"><span class="cnt" data-target="71" data-suffix="K">0</span></span>
+      </div>
+    </div>
+
+    <!-- Demografi -->
+    <div class="stat-category stat-block" data-delay="600">
+      <span class="stat-cat-label">Demografi</span>
+      <div class="demo-row">
+        <span class="demo-label">Kvinnor</span>
+        <div class="demo-bar-wrap"><div class="demo-bar" style="width:60%"></div></div>
+        <span class="demo-val"><span class="cnt" data-target="60" data-suffix="%">0</span></span>
+      </div>
+      <div class="demo-row">
+        <span class="demo-label">Män</span>
+        <div class="demo-bar-wrap"><div class="demo-bar" style="width:40%"></div></div>
+        <span class="demo-val"><span class="cnt" data-target="40" data-suffix="%">0</span></span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-line">
+        <span class="stat-key">Primär ålder</span>
+        <div class="stat-bar-wrap"><div class="stat-bar" style="width:50%"></div></div>
+        <span class="stat-val">25–44</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ═══ CREDENTIALS MARQUEE ═══ -->
-<section class="cred">
-  <div class="cred-track">
-    <span>Arla Köket</span><div class="dot"></div>
-    <span>Aftonbladet Godare</span><div class="dot"></div>
-    <span>Nyhetsmorgon · TV4</span><div class="dot"></div>
-    <span>Michelin-kock</span><div class="dot"></div>
-    <span>ICA</span><div class="dot"></div>
-    <span>Mathem</span><div class="dot"></div>
-    <span>ProPud</span><div class="dot"></div>
-    <span>Pressbyrån</span><div class="dot"></div>
-    <span>SvD</span><div class="dot"></div>
-    <span>Arla Köket</span><div class="dot"></div>
-    <span>Aftonbladet Godare</span><div class="dot"></div>
-    <span>Nyhetsmorgon · TV4</span><div class="dot"></div>
-    <span>Michelin-kock</span><div class="dot"></div>
-    <span>ICA</span><div class="dot"></div>
-    <span>Mathem</span><div class="dot"></div>
-    <span>ProPud</span><div class="dot"></div>
-    <span>Pressbyrån</span><div class="dot"></div>
-    <span>SvD</span><div class="dot"></div>
+<!-- ═══════════════════════════════════ -->
+<!-- VIDEOS                              -->
+<!-- ═══════════════════════════════════ -->
+<section class="videos-section reveal">
+  <div class="videos-header">
+    <span>Content</span>
   </div>
-</section>
-
-<!-- ═══ LIFESTYLE IMAGE ═══ -->
-<section class="lifestyle-img reveal">
-  <img src="https://i.ibb.co/Xfs5SQT9/h-rligt-umg-nge.png" alt="Kelvin Wokomaty — behind the scenes" loading="lazy">
-</section>
-
-<!-- ═══ CONTENT SHOWCASE ═══ -->
-<section class="showcase" id="content">
-  <div class="showcase-header reveal">
-    <span class="section-label">Content</span>
-    <h2>Smak i varje frame</h2>
-    <p>Receptvideos, behind-the-scenes och kulinarisk storytelling — autentiskt, högkvalitativt och delbart.</p>
-  </div>
-
-  <div class="img-gallery rstag">
-    <div class="img-gallery-item">
-      <img src="https://i.ibb.co/PZTnrQDW/matbild.png" alt="Kelvin Wokomaty — kulinarisk kreation" loading="lazy">
-      <div class="img-ov"><div class="img-ov-text"><h3>Kulinarisk kreation</h3><p>Fine dining</p></div></div>
-    </div>
-    <div class="img-gallery-item">
-      <img src="https://i.ibb.co/Gf3qhTVj/matbild2.png" alt="Kelvin Wokomaty — nordisk gastronomi" loading="lazy">
-      <div class="img-ov"><div class="img-ov-text"><h3>Nordisk gastronomi</h3><p>Säsongens råvaror</p></div></div>
-    </div>
-    <div class="img-gallery-item">
-      <img src="https://i.ibb.co/MxbwwFM2/matbild3.png" alt="Kelvin Wokomaty — konstnärlig presentation" loading="lazy">
-      <div class="img-ov"><div class="img-ov-text"><h3>Konstnärlig presentation</h3><p>Michelin-precision</p></div></div>
-    </div>
-  </div>
-
-  <div class="video-grid rstag">
+  <div class="video-grid">
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/aDnU5f2L8BA?autoplay=1&mute=1&loop=1&playlist=aDnU5f2L8BA&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1&disablekb=1&iv_load_policy=3" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-      <div class="video-card-label"><span>Recept · Short</span></div>
     </div>
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/oWfOs4RnQZc?autoplay=1&mute=1&loop=1&playlist=oWfOs4RnQZc&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1&disablekb=1&iv_load_policy=3" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-      <div class="video-card-label"><span>Recept · Short</span></div>
     </div>
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/EP8G0p2jEbU?autoplay=1&mute=1&loop=1&playlist=EP8G0p2jEbU&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1&disablekb=1&iv_load_policy=3" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
-      <div class="video-card-label"><span>Recept · Short</span></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ MEDIA ═══ -->
-<section class="media" id="media">
-  <div class="media-header reveal">
-    <span class="section-label">Media & TV</span>
-    <h2>I rampljuset</h2>
+<!-- ═══════════════════════════════════ -->
+<!-- OM                                  -->
+<!-- ═══════════════════════════════════ -->
+<section class="om reveal">
+  <div class="om-portrait">
+    <img src="https://i.ibb.co/tPZhPQt4/profilbild.png" alt="Kelvin Wokomaty" loading="lazy">
   </div>
-  <div class="media-cards rstag">
-    <div class="med-card">
-      <h3>Arla Köket</h3>
-      <span class="role">Matprofil & Receptkreatör</span>
-      <p>Skapar recept och kulinariskt innehåll för en av Sveriges största matplattformar. Från vardagsrätter till festmiddagar — alltid med Michelin-precision.</p>
-    </div>
-    <div class="med-card">
-      <h3>Nyhetsmorgon</h3>
-      <span class="role">Återkommande gästkock · TV4</span>
-      <p>Regelbunden medverkan i Sveriges mest sedda morgonprogram. Lagar live och inspirerar miljoner tittare med kulinarisk expertis.</p>
-    </div>
-    <div class="med-card">
-      <h3>Aftonbladet Godare</h3>
-      <span class="role">Utvald matprofil</span>
-      <p>En av Godares handplockade matprofiler som delar recept och kulinariska trender med Sveriges största digitala matpublik.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ BRAND PARTNERS ═══ -->
-<section class="partners reveal" id="samarbeten">
-  <div class="partners-header">
-    <span class="section-label">Tidigare samarbeten</span>
-    <h2>Varumärken</h2>
-  </div>
-  <div class="partners-grid rstag">
-    <span class="partner-name">Arla</span>
-    <span class="partner-name">ICA</span>
-    <span class="partner-name">Mathem</span>
-    <span class="partner-name">Pressbyrån</span>
-    <span class="partner-name">7-Eleven</span>
-    <span class="partner-name">Lambi</span>
-    <span class="partner-name">ProPud</span>
-    <span class="partner-name">Sinicleaning</span>
-    <span class="partner-name">TV4</span>
-    <span class="partner-name">Aftonbladet</span>
-    <span class="partner-name">SvD</span>
+  <span class="om-label">Om Kelvin</span>
+  <div class="om-divider"></div>
+  <blockquote>
+    Michelin-utbildad sous-chef med bakgrund från Hollands och Stockholms finaste kök. En av Sveriges mest synliga matprofiler — i korsningen av <em>kulinarisk trovärdighet</em>, <em>mediapresens</em> och en <em>engagerad digital publik</em>. Återkommande profil i Arla Köket, Nyhetsmorgon och Aftonbladet Godare. Just nu aktuell med sin <em>första kokbok</em>.
+  </blockquote>
+  <div class="om-partners">
+    <span class="om-partner">Arla</span>
+    <span class="om-partner">SVT</span>
+    <span class="om-partner">TV4</span>
+    <span class="om-partner">Aftonbladet</span>
+    <span class="om-partner">ICA</span>
+    <span class="om-partner">Coop</span>
+    <span class="om-partner">Hugo Boss</span>
+    <span class="om-partner">IKEA</span>
+    <span class="om-partner">Mathem</span>
+    <span class="om-partner">Findus</span>
+    <span class="om-partner">Ankarsrum</span>
+    <span class="om-partner">Willys</span>
+    <span class="om-partner">Pressbyrån</span>
+    <span class="om-partner">7-Eleven</span>
+    <span class="om-partner">ProPud</span>
   </div>
 </section>
 
-<!-- ═══ STATEMENT ═══ -->
-<section class="statement reveal">
-  <h2>Kulinarisk <em>trovärdighet</em>. Mediapresens som <em>når</em>. Content som <em>konverterar</em>.</h2>
-</section>
-
-<!-- ═══ CTA ═══ -->
-<section class="cta" id="kontakt">
-  <div class="cta-inner reveal">
-    <span class="section-label">Samarbeta</span>
-    <h2>Intresserad av att nå en engagerad svensk matpublik genom autentiskt, högkvalitativt content? Hör av dig.</h2>
-    <a href="https://www.foodbykelvin.se/kontakta-oss/" class="cta-btn" target="_blank"><span>Kontakta Kelvin</span></a>
-    <div class="cta-links">
-      <a href="https://www.instagram.com/foodbykelvin/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.tiktok.com/@foodbykelvin" target="_blank" rel="noopener">TikTok</a>
-      <a href="https://www.foodbykelvin.se/" target="_blank" rel="noopener">foodbykelvin.se</a>
-    </div>
+<!-- ═══════════════════════════════════ -->
+<!-- CTA                                 -->
+<!-- ═══════════════════════════════════ -->
+<section class="cta reveal">
+  <h2>Ska vi servera <em>nästa rätt</em> tillsammans?</h2>
+  <div class="cta-links">
+    <a href="https://www.instagram.com/foodbykelvin/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.tiktok.com/@foodbykelvin" target="_blank" rel="noopener">TikTok</a>
+    <a href="mailto:kelvin@foodbykelvin.se">E-post</a>
   </div>
 </section>
 
 <footer>
   <span class="footer-logo">Kelvin Wokomaty</span>
-  <p>&copy; 2026 Food by Kelvin. Alla rättigheter förbehållna.</p>
+  <p>&copy; 2026 · Built by <a href="https://rezdar.com" target="_blank" rel="noopener" style="color:var(--text-muted);text-decoration:none;transition:color .3s;border-bottom:1px solid rgba(201,169,110,.15)">Rezdar Digital</a></p>
 </footer>
 
 <script>
@@ -491,23 +305,41 @@ if(!window.matchMedia('(pointer:fine)').matches)return;
 let mx=0,my=0,dx=0,dy=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;r.style.left=mx+'px';r.style.top=my+'px'});
 (function a(){dx+=(mx-dx)*.14;dy+=(my-dy)*.14;d.style.left=dx-4+'px';d.style.top=dy-4+'px';requestAnimationFrame(a)})();
-document.querySelectorAll('a,button,.img-gallery-item,.video-card,.med-card,.cta-btn,.partner-name').forEach(el=>{
+document.querySelectorAll('a,button,.video-card,.cta-links a').forEach(el=>{
 el.addEventListener('mouseenter',()=>r.classList.add('h'));el.addEventListener('mouseleave',()=>r.classList.remove('h'))})})();
 
-// Nav scroll
-(()=>{const n=document.getElementById('nav');window.addEventListener('scroll',()=>n.classList.toggle('scrolled',scrollY>80),{passive:true})})();
+// Stat blocks — staggered reveal + slow counter animation
+(()=>{
+  const blocks=document.querySelectorAll('.stat-block');
+  const obs=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        const delay=+e.target.dataset.delay||0;
+        setTimeout(()=>{
+          e.target.classList.add('vis');
+          e.target.querySelectorAll('.cnt').forEach(c=>{
+            const target=+c.dataset.target;
+            const suffix=c.dataset.suffix||'';
+            const dur=3500;
+            const start=performance.now();
+            (function tick(now){
+              const p=Math.min((now-start)/dur,1);
+              const eased=1-Math.pow(1-p,4);
+              c.textContent=Math.round(target*eased)+suffix;
+              if(p<1)requestAnimationFrame(tick);
+            })(performance.now());
+          });
+        },delay);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.2});
+  blocks.forEach(b=>obs.observe(b));
+})();
 
-// Mobile menu
-const mb=document.getElementById('menuBtn'),mm=document.getElementById('mobMenu');
-mb.addEventListener('click',()=>{mb.classList.toggle('active');mm.classList.toggle('active');document.body.style.overflow=mm.classList.contains('active')?'hidden':''});
-function closeM(){mb.classList.remove('active');mm.classList.remove('active');document.body.style.overflow=''}
-
-// Scroll reveals
+// General reveals
 (()=>{const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
-document.querySelectorAll('.reveal,.rstag').forEach(el=>obs.observe(el))})();
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el))})();
 </script>
 
 <!-- YouTube IFrame API -->
