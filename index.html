@@ -53,6 +53,10 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 @keyframes sPulse{0%,100%{opacity:.3;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
 @keyframes fadeU{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
+/* ── SECTION TITLES ── */
+.section-title{font-family:'Libre Caslon Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;color:var(--cream);line-height:1.2;margin-bottom:3.5rem;text-align:center}
+.section-title em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-weight:300}
+
 /* ── STATS ── */
 .stats-section{padding:5rem 2rem 4rem}
 .stats-inner{max-width:700px;margin:0 auto}
@@ -86,8 +90,7 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 
 /* ── VIDEOS ── */
 .videos-section{padding:4rem 2rem 8rem}
-.videos-header{text-align:center;margin-bottom:3.5rem}
-.videos-header span{font-size:.55rem;letter-spacing:.5em;text-transform:uppercase;color:var(--gold)}
+.videos-header{text-align:center;margin-bottom:3rem}
 .video-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .video-card{position:relative;border:1px solid rgba(201,169,110,.08);overflow:hidden;aspect-ratio:9/16;transition:border-color .4s}
 .video-card:hover{border-color:rgba(201,169,110,.25)}
@@ -177,6 +180,7 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
 <!-- ═══════════════════════════════════ -->
 <section class="stats-section">
   <div class="stats-inner">
+    <h2 class="section-title reveal">11 miljoner visningar.<br><em>Varje månad.</em></h2>
 
     <!-- Räckvidd -->
     <div class="stat-category stat-block" data-delay="0">
@@ -237,7 +241,7 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
 <!-- ═══════════════════════════════════ -->
 <section class="videos-section reveal">
   <div class="videos-header">
-    <span>Content</span>
+    <h2 class="section-title">Content som <em>konverterar.</em></h2>
   </div>
   <div class="video-grid">
     <div class="video-card">
@@ -259,8 +263,7 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
   <div class="om-portrait">
     <img src="https://i.ibb.co/tPZhPQt4/profilbild.png" alt="Kelvin Wokomaty" loading="lazy">
   </div>
-  <span class="om-label">Om Kelvin</span>
-  <div class="om-divider"></div>
+  <h2 class="section-title" style="margin-bottom:1.5rem">Kocken bakom <em>kameran.</em></h2>
   <blockquote>
     Michelin-utbildad sous-chef med bakgrund från Hollands och Stockholms finaste kök. En av Sveriges mest synliga matprofiler — i korsningen av <em>kulinarisk trovärdighet</em>, <em>mediapresens</em> och en <em>engagerad digital publik</em>. Återkommande profil i Arla Köket, Nyhetsmorgon och Aftonbladet Godare. Just nu aktuell med sin <em>första kokbok</em>.
   </blockquote>
