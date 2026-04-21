@@ -97,7 +97,7 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 .series-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .series-card{display:flex;flex-direction:column;gap:0}
 .series-info{padding:1.2rem 0;text-align:center}
-.series-label{font-size:.45rem;letter-spacing:.35em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:.5rem}
+.series-label{font-size:.55rem;letter-spacing:.35em;text-transform:uppercase;color:var(--text-muted);display:block;margin-bottom:.5rem}
 .series-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--cream);margin-bottom:.6rem}
 .series-stat{display:flex;align-items:baseline;justify-content:center;gap:.4rem}
 .series-views{font-family:'Libre Caslon Display',serif;font-size:1.6rem;color:var(--gold);line-height:1}
@@ -115,6 +115,19 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 .om-divider{width:40px;height:1px;background:var(--gold);margin:0 auto 1.5rem;opacity:.3}
 .om blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.9rem);font-weight:300;line-height:1.6;color:var(--cream);font-style:italic}
 .om blockquote em{color:var(--gold);font-style:normal}
+
+/* ── PHOTO ALBUM ── */
+.album{position:relative;width:100%;max-width:600px;margin:4rem auto 2rem;height:320px}
+.album-photo{position:absolute;overflow:hidden;border:1px solid rgba(201,169,110,.1);box-shadow:0 8px 40px rgba(0,0,0,.4);transition:transform .5s cubic-bezier(.25,.46,.45,.94),box-shadow .5s,z-index 0s}
+.album-photo:hover{z-index:10;box-shadow:0 12px 50px rgba(0,0,0,.6)}
+.album-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.a1{width:200px;height:250px;top:10px;left:5%;transform:rotate(-4deg)}
+.a1:hover{transform:rotate(-1deg) scale(1.04)}
+.a2{width:190px;height:240px;top:20px;left:33%;transform:rotate(2.5deg);z-index:2}
+.a2:hover{transform:rotate(0deg) scale(1.04)}
+.a3{width:195px;height:245px;top:5px;right:5%;transform:rotate(-2deg);z-index:1}
+.a3:hover{transform:rotate(0deg) scale(1.04)}
+
 .om-partners{margin-top:3.5rem;margin-left:calc(-50vw + 50%);margin-right:calc(-50vw + 50%);width:100vw;padding:2rem 0;border-top:1px solid rgba(201,169,110,.06);border-bottom:1px solid rgba(201,169,110,.06);overflow:hidden}
 .om-partners-track{display:flex;align-items:center;gap:3rem;animation:partnerScroll 35s linear infinite;white-space:nowrap}
 .om-partner{font-family:'Cormorant Garamond',serif;font-size:1.2rem;letter-spacing:.15em;text-transform:uppercase;color:var(--text-muted);flex-shrink:0}
@@ -125,6 +138,11 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 .cta{padding:3rem 2rem 6rem;text-align:center}
 .cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:300;font-style:italic;color:var(--cream);line-height:1.5;max-width:650px;margin:0 auto 2.5rem}
 .cta h2 em{color:var(--gold);font-style:normal}
+.cta-btn{display:inline-block;padding:1rem 3rem;border:1px solid var(--gold);color:var(--gold);text-decoration:none;font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;position:relative;overflow:hidden;background:transparent;cursor:pointer;transition:all .5s cubic-bezier(.25,.46,.45,.94)}
+.cta-btn::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .5s cubic-bezier(.25,.46,.45,.94);z-index:0}
+.cta-btn:hover::before{transform:scaleX(1);transform-origin:left}
+.cta-btn span{position:relative;z-index:1;transition:color .5s}
+.cta-btn:hover span{color:var(--black)}
 .cta-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
 .cta-links a{color:var(--text-muted);text-decoration:none;font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;transition:color .3s;position:relative}
 .cta-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
@@ -149,6 +167,10 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
   .stat-block{flex-direction:column;gap:.5rem;align-items:stretch}
   .stat-bar-wrap{margin:0 1rem}
   .om{padding:5rem 1.5rem}
+  .album{height:220px;max-width:380px}
+  .a1{width:140px;height:175px;left:2%}
+  .a2{width:135px;height:170px;left:28%}
+  .a3{width:138px;height:173px;right:2%}
 }
 @media(max-width:480px){
   .series-grid{grid-template-columns:1fr;max-width:280px;margin:0 auto}
@@ -262,7 +284,7 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
 <!-- ═══════════════════════════════════ -->
 <section class="videos-section reveal">
   <div class="videos-header">
-    <h2 class="section-title">Content som <em>konverterar.</em></h2>
+    <h2 class="section-title">Tre serier. <em>53 miljoner visningar.</em></h2>
   </div>
 
   <!-- Images -->
@@ -326,8 +348,15 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
   </div>
   <h2 class="section-title" style="margin-bottom:1.5rem">Kocken bakom <em>kameran.</em></h2>
   <blockquote>
-    En av Sveriges mest synliga matprofiler, där <em>kulinarisk skicklighet</em> möter stark <em>mediapresens</em> och en engagerad digital publik. Med erfarenhet från några av Stockholms mest välrenommerade kök och internationella köksmiljöer i Nederländerna har Kelvin byggt upp en gedigen grund inom det professionella köket. Återkommande gäst i tv-program och medier som Arla Köket, Nyhetsmorgon och Aftonbladet Godare. Just nu aktuell med sin <em>första kokbok med Bonniers</em>.
+    En av Sveriges mest synliga matprofiler, där <em>kulinarisk skicklighet</em> möter stark <em>mediapresens</em> och en engagerad publik. Med erfarenhet från några av Stockholms mest välrenommerade kök och internationella köksmiljöer i Nederländerna har Kelvin byggt upp en gedigen grund inom det professionella köket. Återkommande gäst i tv-program och medier som Arla Köket, Nyhetsmorgon och Aftonbladet Godare. Just nu aktuell med sin <em>första kokbok med Bonniers</em>.
   </blockquote>
+
+  <div class="album reveal">
+    <div class="album-photo a1"><img src="https://i.ibb.co/J04RFJh/image00001.jpg" alt="Kelvin Wokomaty" loading="lazy"></div>
+    <div class="album-photo a2"><img src="https://i.ibb.co/8D64pFmg/image00001.jpg" alt="Kelvin Wokomaty" loading="lazy"></div>
+    <div class="album-photo a3"><img src="https://i.ibb.co/qMYNMCzH/image00002.jpg" alt="Kelvin Wokomaty" loading="lazy"></div>
+  </div>
+
   <div class="om-partners">
     <div class="om-partners-track">
       <span class="om-partner">Arla</span><div class="om-partner-dot"></div>
@@ -369,6 +398,7 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
 <!-- ═══════════════════════════════════ -->
 <section class="cta reveal">
   <h2>Servera <em>nästa rätt</em> tillsammans med<br>Kelvin Wokomaty.</h2>
+  <a href="mailto:kelvin.t.wokomaty@gmail.com" class="cta-btn"><span>Kontakt</span></a>
 </section>
 
 <footer>
