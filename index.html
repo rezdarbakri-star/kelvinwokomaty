@@ -15,11 +15,7 @@
 html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:var(--gold) var(--black)}
 body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-/* ── CURSOR ── */
-.cur-d,.cur-r{position:fixed;pointer-events:none;z-index:10000;border-radius:50%}
-.cur-d{width:8px;height:8px;background:var(--gold);mix-blend-mode:difference}
-.cur-r{width:40px;height:40px;border:1px solid var(--gold);opacity:.5;transform:translate(-50%,-50%);transition:width .3s,height .3s,opacity .3s}
-.cur-r.h{width:70px;height:70px;opacity:.8}
+/* ── CURSOR removed ── */
 
 /* ── PRELOADER ── */
 .preloader{position:fixed;inset:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .8s,visibility .8s}
@@ -70,6 +66,7 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 .stat-line:hover .stat-bar{opacity:.5}
 .stat-key{font-size:.7rem;letter-spacing:.12em;color:var(--text-muted);transition:color .3s}
 .stat-val{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--cream);min-width:70px;text-align:right;transition:color .3s}
+.stat-val-text{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-light);min-width:70px;text-align:right}
 .stat-bar-wrap{flex:1;margin:0 1.5rem;height:3px;background:rgba(201,169,110,.06);position:relative;overflow:hidden;border-radius:2px}
 .stat-bar{height:100%;background:var(--gold);opacity:.25;transform-origin:left;transform:scaleX(0);transition:transform 3s cubic-bezier(.16,1,.3,1),opacity .3s;border-radius:2px}
 .stat-block.vis .stat-bar{transform:scaleX(1)}
@@ -89,15 +86,18 @@ body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-se
 .stat-block.vis{opacity:1;transform:translateY(0)}
 
 /* ── VIDEOS ── */
-.videos-section{padding:4rem 2rem 8rem}
+.videos-section{padding:4rem 2rem 4rem}
 .videos-header{text-align:center;margin-bottom:3rem}
 .video-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .video-card{position:relative;border:1px solid rgba(201,169,110,.08);overflow:hidden;aspect-ratio:9/16;transition:border-color .4s}
 .video-card:hover{border-color:rgba(201,169,110,.25)}
 .video-card iframe{position:absolute;top:-60px;left:-10px;width:calc(100% + 20px);height:calc(100% + 120px);border:none;pointer-events:none}
+.video-card-label{position:absolute;bottom:0;left:0;right:0;padding:1.2rem 1rem .8rem;background:linear-gradient(to top,rgba(10,10,10,.95) 0%,rgba(10,10,10,.6) 70%,transparent 100%);z-index:2;display:flex;flex-direction:column;gap:.3rem}
+.vcl-title{font-family:'Cormorant Garamond',serif;font-size:.95rem;color:var(--cream);font-weight:400}
+.vcl-views{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);opacity:.8}
 
 /* ── OM ── */
-.om{padding:8rem 2rem;max-width:800px;margin:0 auto;text-align:center}
+.om{padding:4rem 2rem 8rem;max-width:800px;margin:0 auto;text-align:center}
 .om-portrait{width:110px;height:110px;border-radius:50%;overflow:hidden;margin:0 auto 2.5rem;border:1px solid rgba(201,169,110,.15)}
 .om-portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(.1);transition:filter .5s}
 .om-portrait:hover img{filter:grayscale(0)}
@@ -136,7 +136,6 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
   .stat-block{flex-direction:column;gap:.5rem;align-items:stretch}
   .stat-bar-wrap{margin:0 1rem}
   .om{padding:5rem 1.5rem}
-  .cur-d,.cur-r{display:none}
 }
 @media(max-width:480px){
   .video-grid{grid-template-columns:1fr;max-width:280px;margin:0 auto}
@@ -150,8 +149,6 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
   <div class="pre-line"></div>
 </div>
 <div class="grain"></div>
-<div class="cur-d" id="cD"></div>
-<div class="cur-r" id="cR"></div>
 
 <!-- ═══════════════════════════════════ -->
 <!-- HERO                                -->
@@ -180,7 +177,7 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
 <!-- ═══════════════════════════════════ -->
 <section class="stats-section">
   <div class="stats-inner">
-    <h2 class="section-title reveal">11 miljoner visningar.<br><em>Varje månad.</em></h2>
+    <h2 class="section-title reveal">8 miljoner visningar.<br><em>Varje månad.</em></h2>
 
     <!-- Räckvidd -->
     <div class="stat-category stat-block" data-delay="0">
@@ -193,7 +190,7 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
       <div class="stat-line">
         <span class="stat-key">Visningar / månad</span>
         <div class="stat-bar-wrap"><div class="stat-bar" style="width:100%"></div></div>
-        <span class="stat-val">~<span class="cnt" data-target="11" data-suffix="M">0</span></span>
+        <span class="stat-val">~<span class="cnt" data-target="8" data-suffix="M">0</span></span>
       </div>
     </div>
 
@@ -209,6 +206,16 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
         <span class="stat-key">TikTok</span>
         <div class="stat-bar-wrap"><div class="stat-bar" style="width:68%"></div></div>
         <span class="stat-val"><span class="cnt" data-target="71" data-suffix="K">0</span></span>
+      </div>
+      <div class="stat-line">
+        <span class="stat-key">YouTube</span>
+        <div class="stat-bar-wrap"><div class="stat-bar" style="width:30%"></div></div>
+        <span class="stat-val-text">Aktiv</span>
+      </div>
+      <div class="stat-line">
+        <span class="stat-key">Facebook</span>
+        <div class="stat-bar-wrap"><div class="stat-bar" style="width:25%"></div></div>
+        <span class="stat-val-text">Aktiv</span>
       </div>
     </div>
 
@@ -245,13 +252,25 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
   </div>
   <div class="video-grid">
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/aDnU5f2L8BA?autoplay=1&mute=1&loop=1&playlist=aDnU5f2L8BA&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1&disablekb=1&iv_load_policy=3" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      <iframe src="https://www.youtube.com/embed/i42OjkR9j8c?autoplay=1&mute=1&loop=1&playlist=i42OjkR9j8c&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1&disablekb=1&iv_load_policy=3" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      <div class="video-card-label">
+        <span class="vcl-title">Laga mat som Michelin-kock</span>
+        <span class="vcl-views">20M+ visningar</span>
+      </div>
     </div>
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/oWfOs4RnQZc?autoplay=1&mute=1&loop=1&playlist=oWfOs4RnQZc&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1&disablekb=1&iv_load_policy=3" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      <iframe src="https://www.youtube.com/embed/5HfZ1lEjAQ0?autoplay=1&mute=1&loop=1&playlist=5HfZ1lEjAQ0&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1&disablekb=1&iv_load_policy=3" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      <div class="video-card-label">
+        <span class="vcl-title">Såsskolan</span>
+        <span class="vcl-views">13M+ visningar</span>
+      </div>
     </div>
     <div class="video-card">
-      <iframe src="https://www.youtube.com/embed/EP8G0p2jEbU?autoplay=1&mute=1&loop=1&playlist=EP8G0p2jEbU&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1&disablekb=1&iv_load_policy=3" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      <iframe src="https://www.youtube.com/embed/nxcFbnVSURQ?autoplay=1&mute=1&loop=1&playlist=nxcFbnVSURQ&controls=0&modestbranding=1&rel=0&showinfo=0&playsinline=1&disablekb=1&iv_load_policy=3" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>
+      <div class="video-card-label">
+        <span class="vcl-title">Överraskar</span>
+        <span class="vcl-views">20M+ visningar</span>
+      </div>
     </div>
   </div>
 </section>
@@ -265,7 +284,7 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
   </div>
   <h2 class="section-title" style="margin-bottom:1.5rem">Kocken bakom <em>kameran.</em></h2>
   <blockquote>
-    Michelin-utbildad sous-chef med bakgrund från Hollands och Stockholms finaste kök. En av Sveriges mest synliga matprofiler — i korsningen av <em>kulinarisk trovärdighet</em>, <em>mediapresens</em> och en <em>engagerad digital publik</em>. Återkommande profil i Arla Köket, Nyhetsmorgon och Aftonbladet Godare. Just nu aktuell med sin <em>första kokbok</em>.
+    En av Sveriges mest synliga matprofiler, där <em>kulinarisk skicklighet</em> möter stark <em>mediapresens</em> och en engagerad digital publik. Med erfarenhet från några av Stockholms mest välrenommerade kök och internationella köksmiljöer i Nederländerna har Kelvin byggt upp en gedigen grund inom det professionella köket. Återkommande gäst i tv-program och medier som Arla Köket, Nyhetsmorgon och Aftonbladet Godare. Just nu aktuell med sin <em>första kokbok med Bonniers</em>.
   </blockquote>
   <div class="om-partners">
     <div class="om-partners-track">
@@ -320,15 +339,6 @@ footer p{font-size:.5rem;color:rgba(138,130,120,.5);letter-spacing:.1em}
 (()=>{const t="KELVIN WOKOMATY",el=document.getElementById('preText');
 t.split('').forEach((c,i)=>{const s=document.createElement('span');s.textContent=c===' '?'\u00A0':c;s.style.animationDelay=`${i*.04}s`;el.appendChild(s)});
 setTimeout(()=>document.getElementById('preloader').classList.add('hidden'),1800)})();
-
-// Cursor
-(()=>{const d=document.getElementById('cD'),r=document.getElementById('cR');
-if(!window.matchMedia('(pointer:fine)').matches)return;
-let mx=0,my=0,dx=0,dy=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;r.style.left=mx+'px';r.style.top=my+'px'});
-(function a(){dx+=(mx-dx)*.14;dy+=(my-dy)*.14;d.style.left=dx-4+'px';d.style.top=dy-4+'px';requestAnimationFrame(a)})();
-document.querySelectorAll('a,button,.video-card,.cta-links a').forEach(el=>{
-el.addEventListener('mouseenter',()=>r.classList.add('h'));el.addEventListener('mouseleave',()=>r.classList.remove('h'))})})();
 
 // Stat blocks — staggered reveal + slow counter animation
 (()=>{
